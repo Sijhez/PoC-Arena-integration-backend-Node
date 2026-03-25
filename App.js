@@ -14,8 +14,6 @@ const fetchingArena = async () => {
     }
 }
 
-/* <script async="" src="https://go.arena.im/public/js/arenalib.js?p=tvazteca&amp;e=eYsOvI6"></script> */
-
 const renderingHtml = (arenaData) => {
   const eventInfo = arenaData.eventInfo || {}
   const title = eventInfo.name || 'Liveblog'
@@ -58,10 +56,7 @@ app.use(cors())
 app.listen(3002, () => {
     console.log("Servidor escuchando en el puerto 3002")
 })
-
-//configuracion avanzada para testeo en browser
-
-app.get('/home', async (req, res) =>{
+app.get('/', async (req, res) =>{
   const arenaData = await fetchingArena();
   const renderLiveBlog = renderingHtml(arenaData);
     
